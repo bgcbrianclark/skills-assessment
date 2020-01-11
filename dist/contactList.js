@@ -116,18 +116,28 @@ function populateList() {
     // Push to browser
     li.innerHTML = listInternal;
     userList.appendChild(li);
-  })
+  });
 
   // Show full contact address on click
   let userButtons = document.querySelectorAll('ul li');
   userButtons.forEach(btn => {
     btn.addEventListener('click',function(e) {
+      userList.classList.remove('open');
       userButtons.forEach(btn => {
         btn.classList.remove('open');
-      })
+      });
+      userList.classList.add('open');
       btn.classList.add('open');
-    })
+    });
   });
+
+  // close focus on clicking out of target li
+  userList.addEventListener('click',function(e) {
+    if (e.target.classList.contains('open')) {
+      userList.classList.remove('open');
+      userButtons.forEach(btn => { btn.classList.remove('open') });
+    }
+  })
 }
 
 // Populate initial list

@@ -43,7 +43,22 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+    position: relative;
   }
+    #app ul:after {
+      background-color: rgba(0,0,0,.8);
+      content: '';
+      display: none;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+      #app ul.open:after {
+        display: block;
+      }
   #app li {
     align-items: center;
     cursor: pointer;
@@ -90,6 +105,7 @@ body {
       #app li.open .status, #app li.open .name, #app li.open .contact, #app li.open .address {
         background-color: #484848;
         color: #ffffff;
+        z-index: 2;
       }
       #app li.open .name {
         border: none;
